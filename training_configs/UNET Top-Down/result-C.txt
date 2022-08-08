@@ -1,0 +1,460 @@
+INFO:numexpr.utils:NumExpr defaulting to 4 threads.
+INFO:sleap.nn.training:Versions:
+SLEAP: 1.2.6
+TensorFlow: 2.8.2
+Numpy: 1.21.5
+Python: 3.7.13
+OS: Linux-5.4.188+-x86_64-with-Ubuntu-18.04-bionic
+INFO:sleap.nn.training:Training labels file: labels.v000.pkg.slp
+INFO:sleap.nn.training:Training profile: multi_instance.json
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Arguments:
+INFO:sleap.nn.training:{
+    "training_job_path": "multi_instance.json",
+    "labels_path": "labels.v000.pkg.slp",
+    "video_paths": [
+        ""
+    ],
+    "val_labels": null,
+    "test_labels": null,
+    "tensorboard": false,
+    "save_viz": false,
+    "zmq": false,
+    "run_name": "",
+    "prefix": "",
+    "suffix": "",
+    "cpu": false,
+    "first_gpu": false,
+    "last_gpu": false,
+    "gpu": 0
+}
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Training job:
+INFO:sleap.nn.training:{
+    "data": {
+        "labels": {
+            "training_labels": null,
+            "validation_labels": null,
+            "validation_fraction": 0.1,
+            "test_labels": null,
+            "split_by_inds": false,
+            "training_inds": null,
+            "validation_inds": null,
+            "test_inds": null,
+            "search_path_hints": [],
+            "skeletons": []
+        },
+        "preprocessing": {
+            "ensure_rgb": false,
+            "ensure_grayscale": false,
+            "imagenet_mode": null,
+            "input_scaling": 0.5,
+            "pad_to_stride": null,
+            "resize_and_pad_to_target": true,
+            "target_height": null,
+            "target_width": null
+        },
+        "instance_cropping": {
+            "center_on_part": null,
+            "crop_size": null,
+            "crop_size_detection_padding": 16
+        }
+    },
+    "model": {
+        "backbone": {
+            "leap": null,
+            "unet": {
+                "stem_stride": null,
+                "max_stride": 8,
+                "output_stride": 4,
+                "filters": 32,
+                "filters_rate": 2.0,
+                "middle_block": true,
+                "up_interpolate": false,
+                "stacks": 1
+            },
+            "hourglass": null,
+            "resnet": null,
+            "pretrained_encoder": null
+        },
+        "heads": {
+            "single_instance": null,
+            "centroid": null,
+            "centered_instance": null,
+            "multi_instance": {
+                "confmaps": {
+                    "part_names": null,
+                    "sigma": 5.0,
+                    "output_stride": 4,
+                    "loss_weight": 1.0,
+                    "offset_refinement": false
+                },
+                "pafs": {
+                    "edges": null,
+                    "sigma": 75.0,
+                    "output_stride": 8,
+                    "loss_weight": 1.0
+                }
+            },
+            "multi_class_bottomup": null,
+            "multi_class_topdown": null
+        }
+    },
+    "optimization": {
+        "preload_data": true,
+        "augmentation_config": {
+            "rotate": true,
+            "rotation_min_angle": -180.0,
+            "rotation_max_angle": 180.0,
+            "translate": false,
+            "translate_min": -5,
+            "translate_max": 5,
+            "scale": false,
+            "scale_min": 0.9,
+            "scale_max": 1.1,
+            "uniform_noise": false,
+            "uniform_noise_min_val": 0.0,
+            "uniform_noise_max_val": 10.0,
+            "gaussian_noise": false,
+            "gaussian_noise_mean": 5.0,
+            "gaussian_noise_stddev": 1.0,
+            "contrast": false,
+            "contrast_min_gamma": 0.5,
+            "contrast_max_gamma": 2.0,
+            "brightness": false,
+            "brightness_min_val": 0.0,
+            "brightness_max_val": 10.0,
+            "random_crop": false,
+            "random_crop_height": 256,
+            "random_crop_width": 256,
+            "random_flip": false,
+            "flip_horizontal": true
+        },
+        "online_shuffling": true,
+        "shuffle_buffer_size": 128,
+        "prefetch": true,
+        "batch_size": 2,
+        "batches_per_epoch": null,
+        "min_batches_per_epoch": 200,
+        "val_batches_per_epoch": null,
+        "min_val_batches_per_epoch": 10,
+        "epochs": 200,
+        "optimizer": "adam",
+        "initial_learning_rate": 0.0001,
+        "learning_rate_schedule": {
+            "reduce_on_plateau": true,
+            "reduction_factor": 0.5,
+            "plateau_min_delta": 1e-06,
+            "plateau_patience": 5,
+            "plateau_cooldown": 3,
+            "min_learning_rate": 1e-08
+        },
+        "hard_keypoint_mining": {
+            "online_mining": false,
+            "hard_to_easy_ratio": 2.0,
+            "min_hard_keypoints": 2,
+            "max_hard_keypoints": null,
+            "loss_scale": 5.0
+        },
+        "early_stopping": {
+            "stop_training_on_plateau": true,
+            "plateau_min_delta": 1e-06,
+            "plateau_patience": 10
+        }
+    },
+    "outputs": {
+        "save_outputs": true,
+        "run_name": "220729_105818",
+        "run_name_prefix": "",
+        "run_name_suffix": ".multi_instance",
+        "runs_folder": "",
+        "tags": [
+            ""
+        ],
+        "save_visualizations": true,
+        "delete_viz_images": true,
+        "zip_outputs": false,
+        "log_to_csv": true,
+        "checkpointing": {
+            "initial_model": false,
+            "best_model": true,
+            "every_epoch": false,
+            "latest_model": false,
+            "final_model": false
+        },
+        "tensorboard": {
+            "write_logs": false,
+            "loss_frequency": "epoch",
+            "architecture_graph": false,
+            "profile_graph": false,
+            "visualizations": true
+        },
+        "zmq": {
+            "subscribe_to_controller": false,
+            "controller_address": "tcp://127.0.0.1:9000",
+            "controller_polling_timeout": 10,
+            "publish_updates": false,
+            "publish_address": "tcp://127.0.0.1:9001"
+        }
+    },
+    "name": "",
+    "description": "",
+    "sleap_version": "1.1.5",
+    "filename": "multi_instance.json"
+}
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Using GPU 0 for acceleration.
+INFO:sleap.nn.training:Disabled GPU memory pre-allocation.
+INFO:sleap.nn.training:System:
+GPUs: 1/1 available
+  Device: /physical_device:GPU:0
+         Available: True
+        Initalized: False
+     Memory growth: True
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Initializing trainer...
+INFO:sleap.nn.training:Loading training labels from: labels.v000.pkg.slp
+INFO:sleap.nn.training:Creating training and validation splits from validation fraction: 0.1
+INFO:sleap.nn.training:  Splits: Training = 450 / Validation = 50.
+INFO:sleap.nn.training:Setting up for training...
+INFO:sleap.nn.training:Setting up pipeline builders...
+INFO:sleap.nn.training:Setting up model...
+INFO:sleap.nn.training:Building test pipeline...
+INFO:sleap.nn.training:Loaded test example. [3.930s]
+INFO:sleap.nn.training:  Input shape: (1080, 1920, 3)
+INFO:sleap.nn.training:Created Keras model.
+INFO:sleap.nn.training:  Backbone: UNet(stacks=1, filters=32, filters_rate=2.0, kernel_size=3, stem_kernel_size=7, convs_per_block=2, stem_blocks=0, down_blocks=3, middle_block=True, up_blocks=1, up_interpolate=False, block_contraction=False)
+INFO:sleap.nn.training:  Max stride: 8
+INFO:sleap.nn.training:  Parameters: 1,911,978
+INFO:sleap.nn.training:  Heads: 
+INFO:sleap.nn.training:    [0] = MultiInstanceConfmapsHead(part_names=['head', 'back_upper', 'back_lower', 'tail_end'], sigma=5.0, output_stride=4, loss_weight=1.0)
+INFO:sleap.nn.training:    [1] = PartAffinityFieldsHead(edges=[('head', 'back_upper'), ('back_upper', 'back_lower'), ('back_lower', 'tail_end')], sigma=75.0, output_stride=8, loss_weight=1.0)
+INFO:sleap.nn.training:  Outputs: 
+INFO:sleap.nn.training:    [0] = KerasTensor(type_spec=TensorSpec(shape=(None, 270, 480, 4), dtype=tf.float32, name=None), name='MultiInstanceConfmapsHead/BiasAdd:0', description="created by layer 'MultiInstanceConfmapsHead'")
+INFO:sleap.nn.training:    [1] = KerasTensor(type_spec=TensorSpec(shape=(None, 135, 240, 6), dtype=tf.float32, name=None), name='PartAffinityFieldsHead/BiasAdd:0', description="created by layer 'PartAffinityFieldsHead'")
+INFO:sleap.nn.training:Setting up data pipelines...
+INFO:sleap.nn.training:Training set: n = 450
+INFO:sleap.nn.training:Validation set: n = 50
+INFO:sleap.nn.training:Setting up optimization...
+INFO:sleap.nn.training:  Learning rate schedule: LearningRateScheduleConfig(reduce_on_plateau=True, reduction_factor=0.5, plateau_min_delta=1e-06, plateau_patience=5, plateau_cooldown=3, min_learning_rate=1e-08)
+INFO:sleap.nn.training:  Early stopping: EarlyStoppingConfig(stop_training_on_plateau=True, plateau_min_delta=1e-06, plateau_patience=10)
+INFO:sleap.nn.training:Setting up outputs...
+INFO:sleap.nn.training:Created run path: 220729_105818.multi_instance
+INFO:sleap.nn.training:Setting up visualization...
+2022-07-29 08:58:52.007802: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -33 } dim { size: -34 } dim { size: -35 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -36 } dim { size: -37 } dim { size: 1 } } }
+2022-07-29 08:58:54.500169: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -33 } dim { size: -34 } dim { size: -35 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -36 } dim { size: -37 } dim { size: 1 } } }
+Unable to use Qt backend for matplotlib. This probably means Qt is running headless.
+INFO:sleap.nn.training:Finished trainer set up. [10.1s]
+INFO:sleap.nn.training:Creating tf.data.Datasets for training data generation...
+INFO:sleap.nn.training:Finished creating training datasets. [143.4s]
+INFO:sleap.nn.training:Starting training loop...
+Epoch 1/200
+225/225 - 185s - loss: 0.0071 - MultiInstanceConfmapsHead_loss: 0.0059 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0063 - val_MultiInstanceConfmapsHead_loss: 0.0052 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 1.0000e-04 - 185s/epoch - 823ms/step
+Epoch 2/200
+225/225 - 156s - loss: 0.0045 - MultiInstanceConfmapsHead_loss: 0.0033 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0037 - val_MultiInstanceConfmapsHead_loss: 0.0026 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 1.0000e-04 - 156s/epoch - 695ms/step
+Epoch 3/200
+225/225 - 169s - loss: 0.0029 - MultiInstanceConfmapsHead_loss: 0.0017 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0025 - val_MultiInstanceConfmapsHead_loss: 0.0014 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 1.0000e-04 - 169s/epoch - 751ms/step
+Epoch 4/200
+225/225 - 166s - loss: 0.0025 - MultiInstanceConfmapsHead_loss: 0.0013 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0013 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.0000e-04 - 166s/epoch - 737ms/step
+Epoch 5/200
+225/225 - 159s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.6981e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.0000e-04 - 159s/epoch - 705ms/step
+Epoch 6/200
+225/225 - 178s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0019 - val_MultiInstanceConfmapsHead_loss: 9.2155e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.0000e-04 - 178s/epoch - 793ms/step
+Epoch 7/200
+225/225 - 151s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.9092e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 9.6911e-04 - lr: 1.0000e-04 - 151s/epoch - 670ms/step
+Epoch 8/200
+225/225 - 163s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.0175e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0017 - val_MultiInstanceConfmapsHead_loss: 7.5852e-04 - val_PartAffinityFieldsHead_loss: 9.2646e-04 - lr: 1.0000e-04 - 163s/epoch - 723ms/step
+Epoch 9/200
+225/225 - 173s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.8314e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0018 - val_MultiInstanceConfmapsHead_loss: 8.0351e-04 - val_PartAffinityFieldsHead_loss: 9.7055e-04 - lr: 1.0000e-04 - 173s/epoch - 767ms/step
+Epoch 10/200
+225/225 - 151s - loss: 0.0019 - MultiInstanceConfmapsHead_loss: 8.5063e-04 - PartAffinityFieldsHead_loss: 0.0010 - val_loss: 0.0017 - val_MultiInstanceConfmapsHead_loss: 7.3558e-04 - val_PartAffinityFieldsHead_loss: 9.2093e-04 - lr: 1.0000e-04 - 151s/epoch - 670ms/step
+Epoch 11/200
+225/225 - 178s - loss: 0.0018 - MultiInstanceConfmapsHead_loss: 8.5675e-04 - PartAffinityFieldsHead_loss: 9.9063e-04 - val_loss: 0.0017 - val_MultiInstanceConfmapsHead_loss: 7.4351e-04 - val_PartAffinityFieldsHead_loss: 9.2489e-04 - lr: 1.0000e-04 - 178s/epoch - 791ms/step
+Epoch 12/200
+225/225 - 164s - loss: 0.0017 - MultiInstanceConfmapsHead_loss: 7.6045e-04 - PartAffinityFieldsHead_loss: 9.6838e-04 - val_loss: 0.0016 - val_MultiInstanceConfmapsHead_loss: 6.9541e-04 - val_PartAffinityFieldsHead_loss: 8.7014e-04 - lr: 1.0000e-04 - 164s/epoch - 728ms/step
+Epoch 13/200
+225/225 - 150s - loss: 0.0017 - MultiInstanceConfmapsHead_loss: 7.1980e-04 - PartAffinityFieldsHead_loss: 9.3942e-04 - val_loss: 0.0015 - val_MultiInstanceConfmapsHead_loss: 7.0143e-04 - val_PartAffinityFieldsHead_loss: 8.2197e-04 - lr: 1.0000e-04 - 150s/epoch - 665ms/step
+Epoch 14/200
+225/225 - 177s - loss: 0.0015 - MultiInstanceConfmapsHead_loss: 6.5499e-04 - PartAffinityFieldsHead_loss: 8.6515e-04 - val_loss: 0.0014 - val_MultiInstanceConfmapsHead_loss: 5.8173e-04 - val_PartAffinityFieldsHead_loss: 7.7688e-04 - lr: 1.0000e-04 - 177s/epoch - 788ms/step
+Epoch 15/200
+225/225 - 152s - loss: 0.0015 - MultiInstanceConfmapsHead_loss: 6.5633e-04 - PartAffinityFieldsHead_loss: 8.3387e-04 - val_loss: 0.0013 - val_MultiInstanceConfmapsHead_loss: 5.3581e-04 - val_PartAffinityFieldsHead_loss: 7.4279e-04 - lr: 1.0000e-04 - 152s/epoch - 674ms/step
+Epoch 16/200
+225/225 - 157s - loss: 0.0014 - MultiInstanceConfmapsHead_loss: 6.2504e-04 - PartAffinityFieldsHead_loss: 8.1617e-04 - val_loss: 0.0013 - val_MultiInstanceConfmapsHead_loss: 6.0743e-04 - val_PartAffinityFieldsHead_loss: 7.2244e-04 - lr: 1.0000e-04 - 157s/epoch - 699ms/step
+Epoch 17/200
+225/225 - 175s - loss: 0.0014 - MultiInstanceConfmapsHead_loss: 5.7482e-04 - PartAffinityFieldsHead_loss: 7.7754e-04 - val_loss: 0.0012 - val_MultiInstanceConfmapsHead_loss: 4.9922e-04 - val_PartAffinityFieldsHead_loss: 6.7553e-04 - lr: 1.0000e-04 - 175s/epoch - 780ms/step
+Epoch 18/200
+225/225 - 164s - loss: 0.0013 - MultiInstanceConfmapsHead_loss: 5.3218e-04 - PartAffinityFieldsHead_loss: 7.4444e-04 - val_loss: 0.0010 - val_MultiInstanceConfmapsHead_loss: 4.2416e-04 - val_PartAffinityFieldsHead_loss: 5.8189e-04 - lr: 1.0000e-04 - 164s/epoch - 729ms/step
+Epoch 19/200
+225/225 - 158s - loss: 0.0013 - MultiInstanceConfmapsHead_loss: 6.0406e-04 - PartAffinityFieldsHead_loss: 7.3365e-04 - val_loss: 0.0011 - val_MultiInstanceConfmapsHead_loss: 4.9670e-04 - val_PartAffinityFieldsHead_loss: 6.5258e-04 - lr: 1.0000e-04 - 158s/epoch - 704ms/step
+Epoch 20/200
+225/225 - 164s - loss: 0.0012 - MultiInstanceConfmapsHead_loss: 5.1497e-04 - PartAffinityFieldsHead_loss: 7.0249e-04 - val_loss: 0.0011 - val_MultiInstanceConfmapsHead_loss: 4.3115e-04 - val_PartAffinityFieldsHead_loss: 6.2021e-04 - lr: 1.0000e-04 - 164s/epoch - 728ms/step
+Epoch 21/200
+225/225 - 148s - loss: 0.0011 - MultiInstanceConfmapsHead_loss: 4.7005e-04 - PartAffinityFieldsHead_loss: 6.6500e-04 - val_loss: 0.0011 - val_MultiInstanceConfmapsHead_loss: 4.3995e-04 - val_PartAffinityFieldsHead_loss: 6.1198e-04 - lr: 1.0000e-04 - 148s/epoch - 659ms/step
+Epoch 22/200
+225/225 - 157s - loss: 0.0011 - MultiInstanceConfmapsHead_loss: 4.8001e-04 - PartAffinityFieldsHead_loss: 6.5987e-04 - val_loss: 9.8112e-04 - val_MultiInstanceConfmapsHead_loss: 4.0318e-04 - val_PartAffinityFieldsHead_loss: 5.7794e-04 - lr: 1.0000e-04 - 157s/epoch - 698ms/step
+Epoch 23/200
+225/225 - 174s - loss: 0.0011 - MultiInstanceConfmapsHead_loss: 4.3431e-04 - PartAffinityFieldsHead_loss: 6.4566e-04 - val_loss: 9.1720e-04 - val_MultiInstanceConfmapsHead_loss: 3.9193e-04 - val_PartAffinityFieldsHead_loss: 5.2526e-04 - lr: 1.0000e-04 - 174s/epoch - 775ms/step
+Epoch 24/200
+225/225 - 163s - loss: 0.0011 - MultiInstanceConfmapsHead_loss: 4.4537e-04 - PartAffinityFieldsHead_loss: 6.2674e-04 - val_loss: 9.9115e-04 - val_MultiInstanceConfmapsHead_loss: 4.3416e-04 - val_PartAffinityFieldsHead_loss: 5.5699e-04 - lr: 1.0000e-04 - 163s/epoch - 724ms/step
+Epoch 25/200
+225/225 - 162s - loss: 0.0011 - MultiInstanceConfmapsHead_loss: 4.3381e-04 - PartAffinityFieldsHead_loss: 6.2445e-04 - val_loss: 9.0346e-04 - val_MultiInstanceConfmapsHead_loss: 3.6670e-04 - val_PartAffinityFieldsHead_loss: 5.3676e-04 - lr: 1.0000e-04 - 162s/epoch - 719ms/step
+Epoch 26/200
+225/225 - 164s - loss: 0.0010 - MultiInstanceConfmapsHead_loss: 4.1966e-04 - PartAffinityFieldsHead_loss: 6.0507e-04 - val_loss: 8.4661e-04 - val_MultiInstanceConfmapsHead_loss: 3.3212e-04 - val_PartAffinityFieldsHead_loss: 5.1449e-04 - lr: 1.0000e-04 - 164s/epoch - 729ms/step
+Epoch 27/200
+225/225 - 146s - loss: 9.8582e-04 - MultiInstanceConfmapsHead_loss: 3.9559e-04 - PartAffinityFieldsHead_loss: 5.9023e-04 - val_loss: 8.7360e-04 - val_MultiInstanceConfmapsHead_loss: 3.4044e-04 - val_PartAffinityFieldsHead_loss: 5.3316e-04 - lr: 1.0000e-04 - 146s/epoch - 649ms/step
+Epoch 28/200
+225/225 - 174s - loss: 0.0010 - MultiInstanceConfmapsHead_loss: 4.1521e-04 - PartAffinityFieldsHead_loss: 5.8533e-04 - val_loss: 8.3117e-04 - val_MultiInstanceConfmapsHead_loss: 3.1068e-04 - val_PartAffinityFieldsHead_loss: 5.2050e-04 - lr: 1.0000e-04 - 174s/epoch - 775ms/step
+Epoch 29/200
+225/225 - 145s - loss: 9.6128e-04 - MultiInstanceConfmapsHead_loss: 3.8534e-04 - PartAffinityFieldsHead_loss: 5.7594e-04 - val_loss: 8.0187e-04 - val_MultiInstanceConfmapsHead_loss: 3.2120e-04 - val_PartAffinityFieldsHead_loss: 4.8067e-04 - lr: 1.0000e-04 - 145s/epoch - 643ms/step
+Epoch 30/200
+225/225 - 162s - loss: 9.4498e-04 - MultiInstanceConfmapsHead_loss: 3.8639e-04 - PartAffinityFieldsHead_loss: 5.5860e-04 - val_loss: 7.9475e-04 - val_MultiInstanceConfmapsHead_loss: 3.1442e-04 - val_PartAffinityFieldsHead_loss: 4.8033e-04 - lr: 1.0000e-04 - 162s/epoch - 721ms/step
+Epoch 31/200
+225/225 - 174s - loss: 9.3057e-04 - MultiInstanceConfmapsHead_loss: 3.7592e-04 - PartAffinityFieldsHead_loss: 5.5464e-04 - val_loss: 7.6523e-04 - val_MultiInstanceConfmapsHead_loss: 2.9012e-04 - val_PartAffinityFieldsHead_loss: 4.7511e-04 - lr: 1.0000e-04 - 174s/epoch - 774ms/step
+Epoch 32/200
+225/225 - 146s - loss: 9.0010e-04 - MultiInstanceConfmapsHead_loss: 3.5619e-04 - PartAffinityFieldsHead_loss: 5.4391e-04 - val_loss: 7.6965e-04 - val_MultiInstanceConfmapsHead_loss: 2.9642e-04 - val_PartAffinityFieldsHead_loss: 4.7323e-04 - lr: 1.0000e-04 - 146s/epoch - 647ms/step
+Epoch 33/200
+225/225 - 161s - loss: 8.9885e-04 - MultiInstanceConfmapsHead_loss: 3.5297e-04 - PartAffinityFieldsHead_loss: 5.4588e-04 - val_loss: 7.5514e-04 - val_MultiInstanceConfmapsHead_loss: 2.8117e-04 - val_PartAffinityFieldsHead_loss: 4.7397e-04 - lr: 1.0000e-04 - 161s/epoch - 716ms/step
+Epoch 34/200
+225/225 - 176s - loss: 8.6574e-04 - MultiInstanceConfmapsHead_loss: 3.4037e-04 - PartAffinityFieldsHead_loss: 5.2538e-04 - val_loss: 7.3394e-04 - val_MultiInstanceConfmapsHead_loss: 2.9137e-04 - val_PartAffinityFieldsHead_loss: 4.4257e-04 - lr: 1.0000e-04 - 176s/epoch - 781ms/step
+Epoch 35/200
+225/225 - 161s - loss: 8.4049e-04 - MultiInstanceConfmapsHead_loss: 3.2236e-04 - PartAffinityFieldsHead_loss: 5.1813e-04 - val_loss: 7.0282e-04 - val_MultiInstanceConfmapsHead_loss: 2.6089e-04 - val_PartAffinityFieldsHead_loss: 4.4192e-04 - lr: 1.0000e-04 - 161s/epoch - 716ms/step
+Epoch 36/200
+225/225 - 163s - loss: 8.3686e-04 - MultiInstanceConfmapsHead_loss: 3.2924e-04 - PartAffinityFieldsHead_loss: 5.0762e-04 - val_loss: 7.6067e-04 - val_MultiInstanceConfmapsHead_loss: 3.0759e-04 - val_PartAffinityFieldsHead_loss: 4.5308e-04 - lr: 1.0000e-04 - 163s/epoch - 724ms/step
+Epoch 37/200
+225/225 - 165s - loss: 8.2305e-04 - MultiInstanceConfmapsHead_loss: 3.2118e-04 - PartAffinityFieldsHead_loss: 5.0187e-04 - val_loss: 6.7703e-04 - val_MultiInstanceConfmapsHead_loss: 2.4884e-04 - val_PartAffinityFieldsHead_loss: 4.2819e-04 - lr: 1.0000e-04 - 165s/epoch - 731ms/step
+Epoch 38/200
+225/225 - 161s - loss: 8.2858e-04 - MultiInstanceConfmapsHead_loss: 3.2841e-04 - PartAffinityFieldsHead_loss: 5.0018e-04 - val_loss: 7.5916e-04 - val_MultiInstanceConfmapsHead_loss: 3.0450e-04 - val_PartAffinityFieldsHead_loss: 4.5467e-04 - lr: 1.0000e-04 - 161s/epoch - 714ms/step
+Epoch 39/200
+225/225 - 162s - loss: 8.1171e-04 - MultiInstanceConfmapsHead_loss: 3.2188e-04 - PartAffinityFieldsHead_loss: 4.8983e-04 - val_loss: 6.8326e-04 - val_MultiInstanceConfmapsHead_loss: 2.5849e-04 - val_PartAffinityFieldsHead_loss: 4.2477e-04 - lr: 1.0000e-04 - 162s/epoch - 721ms/step
+Epoch 40/200
+225/225 - 149s - loss: 7.9540e-04 - MultiInstanceConfmapsHead_loss: 3.0846e-04 - PartAffinityFieldsHead_loss: 4.8695e-04 - val_loss: 6.2257e-04 - val_MultiInstanceConfmapsHead_loss: 2.3244e-04 - val_PartAffinityFieldsHead_loss: 3.9013e-04 - lr: 1.0000e-04 - 149s/epoch - 662ms/step
+Epoch 41/200
+225/225 - 160s - loss: 7.6077e-04 - MultiInstanceConfmapsHead_loss: 2.9545e-04 - PartAffinityFieldsHead_loss: 4.6532e-04 - val_loss: 6.3941e-04 - val_MultiInstanceConfmapsHead_loss: 2.4592e-04 - val_PartAffinityFieldsHead_loss: 3.9349e-04 - lr: 1.0000e-04 - 160s/epoch - 709ms/step
+Epoch 42/200
+225/225 - 176s - loss: 7.6396e-04 - MultiInstanceConfmapsHead_loss: 3.0095e-04 - PartAffinityFieldsHead_loss: 4.6301e-04 - val_loss: 6.2890e-04 - val_MultiInstanceConfmapsHead_loss: 2.3923e-04 - val_PartAffinityFieldsHead_loss: 3.8967e-04 - lr: 1.0000e-04 - 176s/epoch - 782ms/step
+Epoch 43/200
+225/225 - 152s - loss: 7.5359e-04 - MultiInstanceConfmapsHead_loss: 2.9533e-04 - PartAffinityFieldsHead_loss: 4.5826e-04 - val_loss: 6.3373e-04 - val_MultiInstanceConfmapsHead_loss: 2.3726e-04 - val_PartAffinityFieldsHead_loss: 3.9647e-04 - lr: 1.0000e-04 - 152s/epoch - 675ms/step
+Epoch 44/200
+225/225 - 178s - loss: 7.2789e-04 - MultiInstanceConfmapsHead_loss: 2.7511e-04 - PartAffinityFieldsHead_loss: 4.5278e-04 - val_loss: 6.3837e-04 - val_MultiInstanceConfmapsHead_loss: 2.4146e-04 - val_PartAffinityFieldsHead_loss: 3.9691e-04 - lr: 1.0000e-04 - 178s/epoch - 792ms/step
+Epoch 45/200
+
+Epoch 45: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-05.
+225/225 - 144s - loss: 7.2304e-04 - MultiInstanceConfmapsHead_loss: 2.8375e-04 - PartAffinityFieldsHead_loss: 4.3930e-04 - val_loss: 6.3367e-04 - val_MultiInstanceConfmapsHead_loss: 2.4603e-04 - val_PartAffinityFieldsHead_loss: 3.8765e-04 - lr: 1.0000e-04 - 144s/epoch - 640ms/step
+Epoch 46/200
+225/225 - 179s - loss: 6.9145e-04 - MultiInstanceConfmapsHead_loss: 2.6164e-04 - PartAffinityFieldsHead_loss: 4.2981e-04 - val_loss: 5.6059e-04 - val_MultiInstanceConfmapsHead_loss: 2.0844e-04 - val_PartAffinityFieldsHead_loss: 3.5215e-04 - lr: 5.0000e-05 - 179s/epoch - 794ms/step
+Epoch 47/200
+225/225 - 163s - loss: 6.7961e-04 - MultiInstanceConfmapsHead_loss: 2.5745e-04 - PartAffinityFieldsHead_loss: 4.2216e-04 - val_loss: 5.9493e-04 - val_MultiInstanceConfmapsHead_loss: 2.1805e-04 - val_PartAffinityFieldsHead_loss: 3.7688e-04 - lr: 5.0000e-05 - 163s/epoch - 725ms/step
+Epoch 48/200
+225/225 - 155s - loss: 6.8720e-04 - MultiInstanceConfmapsHead_loss: 2.6264e-04 - PartAffinityFieldsHead_loss: 4.2456e-04 - val_loss: 5.9297e-04 - val_MultiInstanceConfmapsHead_loss: 2.1433e-04 - val_PartAffinityFieldsHead_loss: 3.7864e-04 - lr: 5.0000e-05 - 155s/epoch - 691ms/step
+Epoch 49/200
+225/225 - 173s - loss: 6.5966e-04 - MultiInstanceConfmapsHead_loss: 2.4975e-04 - PartAffinityFieldsHead_loss: 4.0991e-04 - val_loss: 5.7352e-04 - val_MultiInstanceConfmapsHead_loss: 2.0721e-04 - val_PartAffinityFieldsHead_loss: 3.6631e-04 - lr: 5.0000e-05 - 173s/epoch - 769ms/step
+Epoch 50/200
+225/225 - 167s - loss: 6.7340e-04 - MultiInstanceConfmapsHead_loss: 2.5641e-04 - PartAffinityFieldsHead_loss: 4.1699e-04 - val_loss: 5.5215e-04 - val_MultiInstanceConfmapsHead_loss: 2.0796e-04 - val_PartAffinityFieldsHead_loss: 3.4419e-04 - lr: 5.0000e-05 - 167s/epoch - 744ms/step
+Epoch 51/200
+225/225 - 152s - loss: 6.5594e-04 - MultiInstanceConfmapsHead_loss: 2.5007e-04 - PartAffinityFieldsHead_loss: 4.0587e-04 - val_loss: 5.7904e-04 - val_MultiInstanceConfmapsHead_loss: 2.1043e-04 - val_PartAffinityFieldsHead_loss: 3.6861e-04 - lr: 5.0000e-05 - 152s/epoch - 678ms/step
+Epoch 52/200
+225/225 - 177s - loss: 6.6221e-04 - MultiInstanceConfmapsHead_loss: 2.4593e-04 - PartAffinityFieldsHead_loss: 4.1628e-04 - val_loss: 5.7754e-04 - val_MultiInstanceConfmapsHead_loss: 2.1195e-04 - val_PartAffinityFieldsHead_loss: 3.6559e-04 - lr: 5.0000e-05 - 177s/epoch - 789ms/step
+Epoch 53/200
+225/225 - 160s - loss: 6.5839e-04 - MultiInstanceConfmapsHead_loss: 2.5382e-04 - PartAffinityFieldsHead_loss: 4.0457e-04 - val_loss: 5.8683e-04 - val_MultiInstanceConfmapsHead_loss: 2.2074e-04 - val_PartAffinityFieldsHead_loss: 3.6609e-04 - lr: 5.0000e-05 - 160s/epoch - 711ms/step
+Epoch 54/200
+225/225 - 150s - loss: 6.5852e-04 - MultiInstanceConfmapsHead_loss: 2.4929e-04 - PartAffinityFieldsHead_loss: 4.0923e-04 - val_loss: 5.8311e-04 - val_MultiInstanceConfmapsHead_loss: 2.1888e-04 - val_PartAffinityFieldsHead_loss: 3.6423e-04 - lr: 5.0000e-05 - 150s/epoch - 667ms/step
+Epoch 55/200
+
+Epoch 55: ReduceLROnPlateau reducing learning rate to 2.499999936844688e-05.
+225/225 - 175s - loss: 6.3968e-04 - MultiInstanceConfmapsHead_loss: 2.4044e-04 - PartAffinityFieldsHead_loss: 3.9923e-04 - val_loss: 5.6622e-04 - val_MultiInstanceConfmapsHead_loss: 2.0522e-04 - val_PartAffinityFieldsHead_loss: 3.6099e-04 - lr: 5.0000e-05 - 175s/epoch - 776ms/step
+Epoch 56/200
+225/225 - 149s - loss: 6.2669e-04 - MultiInstanceConfmapsHead_loss: 2.3226e-04 - PartAffinityFieldsHead_loss: 3.9443e-04 - val_loss: 5.5805e-04 - val_MultiInstanceConfmapsHead_loss: 2.0001e-04 - val_PartAffinityFieldsHead_loss: 3.5804e-04 - lr: 2.5000e-05 - 149s/epoch - 661ms/step
+Epoch 57/200
+225/225 - 164s - loss: 6.3229e-04 - MultiInstanceConfmapsHead_loss: 2.3570e-04 - PartAffinityFieldsHead_loss: 3.9659e-04 - val_loss: 5.3238e-04 - val_MultiInstanceConfmapsHead_loss: 1.9124e-04 - val_PartAffinityFieldsHead_loss: 3.4114e-04 - lr: 2.5000e-05 - 164s/epoch - 728ms/step
+Epoch 58/200
+225/225 - 164s - loss: 6.0711e-04 - MultiInstanceConfmapsHead_loss: 2.2296e-04 - PartAffinityFieldsHead_loss: 3.8415e-04 - val_loss: 5.1787e-04 - val_MultiInstanceConfmapsHead_loss: 1.8689e-04 - val_PartAffinityFieldsHead_loss: 3.3099e-04 - lr: 2.5000e-05 - 164s/epoch - 729ms/step
+Epoch 59/200
+225/225 - 178s - loss: 6.1328e-04 - MultiInstanceConfmapsHead_loss: 2.2959e-04 - PartAffinityFieldsHead_loss: 3.8369e-04 - val_loss: 5.2270e-04 - val_MultiInstanceConfmapsHead_loss: 1.9266e-04 - val_PartAffinityFieldsHead_loss: 3.3004e-04 - lr: 2.5000e-05 - 178s/epoch - 790ms/step
+Epoch 60/200
+225/225 - 147s - loss: 6.0926e-04 - MultiInstanceConfmapsHead_loss: 2.2912e-04 - PartAffinityFieldsHead_loss: 3.8014e-04 - val_loss: 5.3465e-04 - val_MultiInstanceConfmapsHead_loss: 1.9948e-04 - val_PartAffinityFieldsHead_loss: 3.3517e-04 - lr: 2.5000e-05 - 147s/epoch - 654ms/step
+Epoch 61/200
+225/225 - 165s - loss: 6.1499e-04 - MultiInstanceConfmapsHead_loss: 2.2904e-04 - PartAffinityFieldsHead_loss: 3.8594e-04 - val_loss: 5.5672e-04 - val_MultiInstanceConfmapsHead_loss: 1.9754e-04 - val_PartAffinityFieldsHead_loss: 3.5918e-04 - lr: 2.5000e-05 - 165s/epoch - 733ms/step
+Epoch 62/200
+225/225 - 166s - loss: 6.1184e-04 - MultiInstanceConfmapsHead_loss: 2.2676e-04 - PartAffinityFieldsHead_loss: 3.8508e-04 - val_loss: 5.1413e-04 - val_MultiInstanceConfmapsHead_loss: 1.8622e-04 - val_PartAffinityFieldsHead_loss: 3.2791e-04 - lr: 2.5000e-05 - 166s/epoch - 737ms/step
+Epoch 63/200
+225/225 - 160s - loss: 6.0317e-04 - MultiInstanceConfmapsHead_loss: 2.2574e-04 - PartAffinityFieldsHead_loss: 3.7743e-04 - val_loss: 4.9971e-04 - val_MultiInstanceConfmapsHead_loss: 1.8596e-04 - val_PartAffinityFieldsHead_loss: 3.1375e-04 - lr: 2.5000e-05 - 160s/epoch - 711ms/step
+Epoch 64/200
+225/225 - 165s - loss: 6.1289e-04 - MultiInstanceConfmapsHead_loss: 2.3123e-04 - PartAffinityFieldsHead_loss: 3.8167e-04 - val_loss: 5.3576e-04 - val_MultiInstanceConfmapsHead_loss: 2.1322e-04 - val_PartAffinityFieldsHead_loss: 3.2254e-04 - lr: 2.5000e-05 - 165s/epoch - 733ms/step
+Epoch 65/200
+225/225 - 166s - loss: 6.0450e-04 - MultiInstanceConfmapsHead_loss: 2.2712e-04 - PartAffinityFieldsHead_loss: 3.7738e-04 - val_loss: 5.2715e-04 - val_MultiInstanceConfmapsHead_loss: 1.9679e-04 - val_PartAffinityFieldsHead_loss: 3.3036e-04 - lr: 2.5000e-05 - 166s/epoch - 740ms/step
+Epoch 66/200
+225/225 - 179s - loss: 6.0193e-04 - MultiInstanceConfmapsHead_loss: 2.2443e-04 - PartAffinityFieldsHead_loss: 3.7751e-04 - val_loss: 5.1063e-04 - val_MultiInstanceConfmapsHead_loss: 1.8104e-04 - val_PartAffinityFieldsHead_loss: 3.2959e-04 - lr: 2.5000e-05 - 179s/epoch - 796ms/step
+Epoch 67/200
+225/225 - 154s - loss: 6.0618e-04 - MultiInstanceConfmapsHead_loss: 2.2612e-04 - PartAffinityFieldsHead_loss: 3.8006e-04 - val_loss: 4.9579e-04 - val_MultiInstanceConfmapsHead_loss: 1.7805e-04 - val_PartAffinityFieldsHead_loss: 3.1773e-04 - lr: 2.5000e-05 - 154s/epoch - 683ms/step
+Epoch 68/200
+225/225 - 165s - loss: 6.0539e-04 - MultiInstanceConfmapsHead_loss: 2.2715e-04 - PartAffinityFieldsHead_loss: 3.7824e-04 - val_loss: 5.0377e-04 - val_MultiInstanceConfmapsHead_loss: 1.9027e-04 - val_PartAffinityFieldsHead_loss: 3.1350e-04 - lr: 2.5000e-05 - 165s/epoch - 731ms/step
+Epoch 69/200
+225/225 - 177s - loss: 5.9442e-04 - MultiInstanceConfmapsHead_loss: 2.2272e-04 - PartAffinityFieldsHead_loss: 3.7170e-04 - val_loss: 5.2525e-04 - val_MultiInstanceConfmapsHead_loss: 1.9848e-04 - val_PartAffinityFieldsHead_loss: 3.2677e-04 - lr: 2.5000e-05 - 177s/epoch - 785ms/step
+Epoch 70/200
+225/225 - 168s - loss: 5.9342e-04 - MultiInstanceConfmapsHead_loss: 2.1954e-04 - PartAffinityFieldsHead_loss: 3.7388e-04 - val_loss: 5.1600e-04 - val_MultiInstanceConfmapsHead_loss: 1.8369e-04 - val_PartAffinityFieldsHead_loss: 3.3231e-04 - lr: 2.5000e-05 - 168s/epoch - 747ms/step
+Epoch 71/200
+225/225 - 157s - loss: 5.9075e-04 - MultiInstanceConfmapsHead_loss: 2.2014e-04 - PartAffinityFieldsHead_loss: 3.7060e-04 - val_loss: 4.9357e-04 - val_MultiInstanceConfmapsHead_loss: 1.7945e-04 - val_PartAffinityFieldsHead_loss: 3.1412e-04 - lr: 2.5000e-05 - 157s/epoch - 696ms/step
+Epoch 72/200
+225/225 - 161s - loss: 5.9197e-04 - MultiInstanceConfmapsHead_loss: 2.1921e-04 - PartAffinityFieldsHead_loss: 3.7276e-04 - val_loss: 5.2106e-04 - val_MultiInstanceConfmapsHead_loss: 1.9522e-04 - val_PartAffinityFieldsHead_loss: 3.2585e-04 - lr: 2.5000e-05 - 161s/epoch - 714ms/step
+Epoch 73/200
+225/225 - 180s - loss: 5.8673e-04 - MultiInstanceConfmapsHead_loss: 2.1984e-04 - PartAffinityFieldsHead_loss: 3.6689e-04 - val_loss: 4.9406e-04 - val_MultiInstanceConfmapsHead_loss: 1.7939e-04 - val_PartAffinityFieldsHead_loss: 3.1468e-04 - lr: 2.5000e-05 - 180s/epoch - 801ms/step
+Epoch 74/200
+225/225 - 155s - loss: 5.9193e-04 - MultiInstanceConfmapsHead_loss: 2.2169e-04 - PartAffinityFieldsHead_loss: 3.7024e-04 - val_loss: 5.1253e-04 - val_MultiInstanceConfmapsHead_loss: 1.8985e-04 - val_PartAffinityFieldsHead_loss: 3.2268e-04 - lr: 2.5000e-05 - 155s/epoch - 688ms/step
+Epoch 75/200
+225/225 - 164s - loss: 5.8304e-04 - MultiInstanceConfmapsHead_loss: 2.1169e-04 - PartAffinityFieldsHead_loss: 3.7135e-04 - val_loss: 4.7528e-04 - val_MultiInstanceConfmapsHead_loss: 1.6809e-04 - val_PartAffinityFieldsHead_loss: 3.0719e-04 - lr: 2.5000e-05 - 164s/epoch - 730ms/step
+Epoch 76/200
+225/225 - 161s - loss: 5.8915e-04 - MultiInstanceConfmapsHead_loss: 2.1911e-04 - PartAffinityFieldsHead_loss: 3.7004e-04 - val_loss: 5.0564e-04 - val_MultiInstanceConfmapsHead_loss: 1.8304e-04 - val_PartAffinityFieldsHead_loss: 3.2260e-04 - lr: 2.5000e-05 - 161s/epoch - 716ms/step
+Epoch 77/200
+225/225 - 179s - loss: 5.8596e-04 - MultiInstanceConfmapsHead_loss: 2.1741e-04 - PartAffinityFieldsHead_loss: 3.6856e-04 - val_loss: 5.0403e-04 - val_MultiInstanceConfmapsHead_loss: 1.9884e-04 - val_PartAffinityFieldsHead_loss: 3.0519e-04 - lr: 2.5000e-05 - 179s/epoch - 798ms/step
+Epoch 78/200
+225/225 - 167s - loss: 5.8788e-04 - MultiInstanceConfmapsHead_loss: 2.2272e-04 - PartAffinityFieldsHead_loss: 3.6516e-04 - val_loss: 4.9361e-04 - val_MultiInstanceConfmapsHead_loss: 1.7975e-04 - val_PartAffinityFieldsHead_loss: 3.1386e-04 - lr: 2.5000e-05 - 167s/epoch - 743ms/step
+Epoch 79/200
+225/225 - 153s - loss: 5.7722e-04 - MultiInstanceConfmapsHead_loss: 2.1270e-04 - PartAffinityFieldsHead_loss: 3.6452e-04 - val_loss: 4.9973e-04 - val_MultiInstanceConfmapsHead_loss: 1.8719e-04 - val_PartAffinityFieldsHead_loss: 3.1254e-04 - lr: 2.5000e-05 - 153s/epoch - 680ms/step
+Epoch 80/200
+
+Epoch 80: ReduceLROnPlateau reducing learning rate to 1.249999968422344e-05.
+225/225 - 177s - loss: 5.7206e-04 - MultiInstanceConfmapsHead_loss: 2.0990e-04 - PartAffinityFieldsHead_loss: 3.6216e-04 - val_loss: 5.3479e-04 - val_MultiInstanceConfmapsHead_loss: 1.9760e-04 - val_PartAffinityFieldsHead_loss: 3.3719e-04 - lr: 2.5000e-05 - 177s/epoch - 786ms/step
+Epoch 81/200
+225/225 - 168s - loss: 5.7150e-04 - MultiInstanceConfmapsHead_loss: 2.1180e-04 - PartAffinityFieldsHead_loss: 3.5970e-04 - val_loss: 5.0389e-04 - val_MultiInstanceConfmapsHead_loss: 1.8204e-04 - val_PartAffinityFieldsHead_loss: 3.2185e-04 - lr: 1.2500e-05 - 168s/epoch - 746ms/step
+Epoch 82/200
+225/225 - 156s - loss: 5.7422e-04 - MultiInstanceConfmapsHead_loss: 2.1456e-04 - PartAffinityFieldsHead_loss: 3.5966e-04 - val_loss: 4.8054e-04 - val_MultiInstanceConfmapsHead_loss: 1.6975e-04 - val_PartAffinityFieldsHead_loss: 3.1079e-04 - lr: 1.2500e-05 - 156s/epoch - 692ms/step
+Epoch 83/200
+225/225 - 179s - loss: 5.6805e-04 - MultiInstanceConfmapsHead_loss: 2.1038e-04 - PartAffinityFieldsHead_loss: 3.5766e-04 - val_loss: 4.5925e-04 - val_MultiInstanceConfmapsHead_loss: 1.6538e-04 - val_PartAffinityFieldsHead_loss: 2.9386e-04 - lr: 1.2500e-05 - 179s/epoch - 797ms/step
+Epoch 84/200
+225/225 - 149s - loss: 5.6696e-04 - MultiInstanceConfmapsHead_loss: 2.1041e-04 - PartAffinityFieldsHead_loss: 3.5655e-04 - val_loss: 4.7813e-04 - val_MultiInstanceConfmapsHead_loss: 1.7303e-04 - val_PartAffinityFieldsHead_loss: 3.0510e-04 - lr: 1.2500e-05 - 149s/epoch - 660ms/step
+Epoch 85/200
+225/225 - 178s - loss: 5.5803e-04 - MultiInstanceConfmapsHead_loss: 2.0614e-04 - PartAffinityFieldsHead_loss: 3.5189e-04 - val_loss: 4.9811e-04 - val_MultiInstanceConfmapsHead_loss: 1.8129e-04 - val_PartAffinityFieldsHead_loss: 3.1682e-04 - lr: 1.2500e-05 - 178s/epoch - 791ms/step
+Epoch 86/200
+225/225 - 156s - loss: 5.5746e-04 - MultiInstanceConfmapsHead_loss: 2.0202e-04 - PartAffinityFieldsHead_loss: 3.5544e-04 - val_loss: 4.9532e-04 - val_MultiInstanceConfmapsHead_loss: 1.8698e-04 - val_PartAffinityFieldsHead_loss: 3.0834e-04 - lr: 1.2500e-05 - 156s/epoch - 691ms/step
+Epoch 87/200
+225/225 - 164s - loss: 5.6090e-04 - MultiInstanceConfmapsHead_loss: 2.0601e-04 - PartAffinityFieldsHead_loss: 3.5490e-04 - val_loss: 4.7330e-04 - val_MultiInstanceConfmapsHead_loss: 1.7828e-04 - val_PartAffinityFieldsHead_loss: 2.9502e-04 - lr: 1.2500e-05 - 164s/epoch - 730ms/step
+Epoch 88/200
+
+Epoch 88: ReduceLROnPlateau reducing learning rate to 6.24999984211172e-06.
+225/225 - 160s - loss: 5.6368e-04 - MultiInstanceConfmapsHead_loss: 2.0659e-04 - PartAffinityFieldsHead_loss: 3.5709e-04 - val_loss: 4.8513e-04 - val_MultiInstanceConfmapsHead_loss: 1.7634e-04 - val_PartAffinityFieldsHead_loss: 3.0879e-04 - lr: 1.2500e-05 - 160s/epoch - 713ms/step
+Epoch 89/200
+225/225 - 180s - loss: 5.5662e-04 - MultiInstanceConfmapsHead_loss: 2.0152e-04 - PartAffinityFieldsHead_loss: 3.5509e-04 - val_loss: 4.7178e-04 - val_MultiInstanceConfmapsHead_loss: 1.6473e-04 - val_PartAffinityFieldsHead_loss: 3.0705e-04 - lr: 6.2500e-06 - 180s/epoch - 798ms/step
+Epoch 90/200
+225/225 - 169s - loss: 5.5874e-04 - MultiInstanceConfmapsHead_loss: 2.0589e-04 - PartAffinityFieldsHead_loss: 3.5286e-04 - val_loss: 4.7984e-04 - val_MultiInstanceConfmapsHead_loss: 1.6936e-04 - val_PartAffinityFieldsHead_loss: 3.1048e-04 - lr: 6.2500e-06 - 169s/epoch - 751ms/step
+Epoch 91/200
+225/225 - 155s - loss: 5.5591e-04 - MultiInstanceConfmapsHead_loss: 2.0412e-04 - PartAffinityFieldsHead_loss: 3.5179e-04 - val_loss: 4.6415e-04 - val_MultiInstanceConfmapsHead_loss: 1.6636e-04 - val_PartAffinityFieldsHead_loss: 2.9779e-04 - lr: 6.2500e-06 - 155s/epoch - 690ms/step
+Epoch 92/200
+225/225 - 159s - loss: 5.5326e-04 - MultiInstanceConfmapsHead_loss: 2.0625e-04 - PartAffinityFieldsHead_loss: 3.4701e-04 - val_loss: 4.6821e-04 - val_MultiInstanceConfmapsHead_loss: 1.6688e-04 - val_PartAffinityFieldsHead_loss: 3.0133e-04 - lr: 6.2500e-06 - 159s/epoch - 706ms/step
+Epoch 93/200
+225/225 - 166s - loss: 5.5104e-04 - MultiInstanceConfmapsHead_loss: 2.0222e-04 - PartAffinityFieldsHead_loss: 3.4882e-04 - val_loss: 4.8701e-04 - val_MultiInstanceConfmapsHead_loss: 1.7137e-04 - val_PartAffinityFieldsHead_loss: 3.1564e-04 - lr: 6.2500e-06 - 166s/epoch - 738ms/step
+Epoch 93: early stopping
+INFO:sleap.nn.training:Finished training loop. [253.7 min]
+INFO:sleap.nn.training:Deleting visualization directory: 220729_105818.multi_instance/viz
+INFO:sleap.nn.training:Saving evaluation metrics to model folder...
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   0% ETA: -:--:-- ?2022-07-29 13:15:11.623192: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -57 } dim { size: -58 } dim { size: -59 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -5 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: -60 } dim { size: -61 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 100% ETA: 0:00:01 3.2 FPS2022-07-29 13:17:30.119717: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -57 } dim { size: -58 } dim { size: -59 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -5 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: -60 } dim { size: -61 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% ETA: 0:00:00 ?
+INFO:sleap.nn.evals:Saved predictions: 220729_105818.multi_instance/labels_pr.train.slp
+INFO:sleap.nn.evals:Saved metrics: 220729_105818.multi_instance/metrics.train.npz
+INFO:sleap.nn.evals:OKS mAP: 0.000053
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   0% ETA: -:--:-- ?2022-07-29 13:18:48.974571: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -57 } dim { size: -58 } dim { size: -59 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -5 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: -60 } dim { size: -61 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━  96% ETA: 0:00:01 3.3 FPS2022-07-29 13:19:03.504499: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -57 } dim { size: -58 } dim { size: -59 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -5 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla P100-PCIE-16GB" frequency: 1328 num_cores: 56 environment { key: "architecture" value: "6.0" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 16139419648 bandwidth: 732160000 } outputs { dtype: DT_FLOAT shape { dim { size: -5 } dim { size: -60 } dim { size: -61 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% ETA: 0:00:00 0.5 FPS
+INFO:sleap.nn.evals:Saved predictions: 220729_105818.multi_instance/labels_pr.val.slp
+INFO:sleap.nn.evals:Saved metrics: 220729_105818.multi_instance/metrics.val.npz
+INFO:sleap.nn.evals:OKS mAP: 0.000043	

@@ -1,0 +1,388 @@
+INFO:numexpr.utils:NumExpr defaulting to 4 threads.
+INFO:sleap.nn.training:Versions:
+SLEAP: 1.2.6
+TensorFlow: 2.8.2
+Numpy: 1.21.5
+Python: 3.7.13
+OS: Linux-5.4.188+-x86_64-with-Ubuntu-18.04-bionic
+INFO:sleap.nn.training:Training labels file: labels.v000.pkg.slp
+INFO:sleap.nn.training:Training profile: multi_instance.json
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Arguments:
+INFO:sleap.nn.training:{
+    "training_job_path": "multi_instance.json",
+    "labels_path": "labels.v000.pkg.slp",
+    "video_paths": [
+        ""
+    ],
+    "val_labels": null,
+    "test_labels": null,
+    "tensorboard": false,
+    "save_viz": false,
+    "zmq": false,
+    "run_name": "",
+    "prefix": "",
+    "suffix": "",
+    "cpu": false,
+    "first_gpu": false,
+    "last_gpu": false,
+    "gpu": 0
+}
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Training job:
+INFO:sleap.nn.training:{
+    "data": {
+        "labels": {
+            "training_labels": null,
+            "validation_labels": null,
+            "validation_fraction": 0.1,
+            "test_labels": null,
+            "split_by_inds": false,
+            "training_inds": null,
+            "validation_inds": null,
+            "test_inds": null,
+            "search_path_hints": [],
+            "skeletons": []
+        },
+        "preprocessing": {
+            "ensure_rgb": false,
+            "ensure_grayscale": false,
+            "imagenet_mode": null,
+            "input_scaling": 0.5,
+            "pad_to_stride": null,
+            "resize_and_pad_to_target": true,
+            "target_height": null,
+            "target_width": null
+        },
+        "instance_cropping": {
+            "center_on_part": null,
+            "crop_size": null,
+            "crop_size_detection_padding": 16
+        }
+    },
+    "model": {
+        "backbone": {
+            "leap": null,
+            "unet": null,
+            "hourglass": null,
+            "resnet": {
+                "version": "ResNet50",
+                "weights": "frozen",
+                "upsampling": {
+                    "method": "interpolation",
+                    "skip_connections": "add",
+                    "block_stride": 2,
+                    "filters": 24,
+                    "filters_rate": 1.0,
+                    "refine_convs": 2,
+                    "batch_norm": true,
+                    "transposed_conv_kernel_size": 4
+                },
+                "max_stride": 16,
+                "output_stride": 4
+            },
+            "pretrained_encoder": null
+        },
+        "heads": {
+            "single_instance": null,
+            "centroid": null,
+            "centered_instance": null,
+            "multi_instance": {
+                "confmaps": {
+                    "part_names": null,
+                    "sigma": 5.0,
+                    "output_stride": 4,
+                    "loss_weight": 1.0,
+                    "offset_refinement": false
+                },
+                "pafs": {
+                    "edges": null,
+                    "sigma": 75.0,
+                    "output_stride": 8,
+                    "loss_weight": 1.0
+                }
+            },
+            "multi_class_bottomup": null,
+            "multi_class_topdown": null
+        }
+    },
+    "optimization": {
+        "preload_data": true,
+        "augmentation_config": {
+            "rotate": true,
+            "rotation_min_angle": -180.0,
+            "rotation_max_angle": 180.0,
+            "translate": false,
+            "translate_min": -5,
+            "translate_max": 5,
+            "scale": false,
+            "scale_min": 0.9,
+            "scale_max": 1.1,
+            "uniform_noise": false,
+            "uniform_noise_min_val": 0.0,
+            "uniform_noise_max_val": 10.0,
+            "gaussian_noise": false,
+            "gaussian_noise_mean": 5.0,
+            "gaussian_noise_stddev": 1.0,
+            "contrast": false,
+            "contrast_min_gamma": 0.5,
+            "contrast_max_gamma": 2.0,
+            "brightness": false,
+            "brightness_min_val": 0.0,
+            "brightness_max_val": 10.0,
+            "random_crop": false,
+            "random_crop_height": 256,
+            "random_crop_width": 256,
+            "random_flip": false,
+            "flip_horizontal": true
+        },
+        "online_shuffling": true,
+        "shuffle_buffer_size": 128,
+        "prefetch": true,
+        "batch_size": 2,
+        "batches_per_epoch": null,
+        "min_batches_per_epoch": 200,
+        "val_batches_per_epoch": null,
+        "min_val_batches_per_epoch": 10,
+        "epochs": 200,
+        "optimizer": "adam",
+        "initial_learning_rate": 0.001,
+        "learning_rate_schedule": {
+            "reduce_on_plateau": true,
+            "reduction_factor": 0.5,
+            "plateau_min_delta": 1e-06,
+            "plateau_patience": 5,
+            "plateau_cooldown": 3,
+            "min_learning_rate": 1e-08
+        },
+        "hard_keypoint_mining": {
+            "online_mining": false,
+            "hard_to_easy_ratio": 2.0,
+            "min_hard_keypoints": 2,
+            "max_hard_keypoints": null,
+            "loss_scale": 5.0
+        },
+        "early_stopping": {
+            "stop_training_on_plateau": true,
+            "plateau_min_delta": 1e-06,
+            "plateau_patience": 10
+        }
+    },
+    "outputs": {
+        "save_outputs": true,
+        "run_name": "220731_141758",
+        "run_name_prefix": "",
+        "run_name_suffix": ".multi_instance",
+        "runs_folder": "",
+        "tags": [
+            ""
+        ],
+        "save_visualizations": true,
+        "delete_viz_images": true,
+        "zip_outputs": false,
+        "log_to_csv": true,
+        "checkpointing": {
+            "initial_model": false,
+            "best_model": true,
+            "every_epoch": false,
+            "latest_model": false,
+            "final_model": false
+        },
+        "tensorboard": {
+            "write_logs": false,
+            "loss_frequency": "epoch",
+            "architecture_graph": false,
+            "profile_graph": false,
+            "visualizations": true
+        },
+        "zmq": {
+            "subscribe_to_controller": false,
+            "controller_address": "tcp://127.0.0.1:9000",
+            "controller_polling_timeout": 10,
+            "publish_updates": false,
+            "publish_address": "tcp://127.0.0.1:9001"
+        }
+    },
+    "name": "",
+    "description": "",
+    "sleap_version": "1.1.5",
+    "filename": "multi_instance.json"
+}
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Using GPU 0 for acceleration.
+INFO:sleap.nn.training:Disabled GPU memory pre-allocation.
+INFO:sleap.nn.training:System:
+GPUs: 1/1 available
+  Device: /physical_device:GPU:0
+         Available: True
+        Initalized: False
+     Memory growth: True
+INFO:sleap.nn.training:
+INFO:sleap.nn.training:Initializing trainer...
+INFO:sleap.nn.training:Loading training labels from: labels.v000.pkg.slp
+INFO:sleap.nn.training:Creating training and validation splits from validation fraction: 0.1
+INFO:sleap.nn.training:  Splits: Training = 450 / Validation = 50.
+INFO:sleap.nn.training:Setting up for training...
+INFO:sleap.nn.training:Setting up pipeline builders...
+INFO:sleap.nn.training:Setting up model...
+INFO:sleap.nn.training:Building test pipeline...
+INFO:sleap.nn.training:Loaded test example. [5.600s]
+INFO:sleap.nn.training:  Input shape: (1088, 1920, 3)
+INFO:sleap.nn.training:Created Keras model.
+INFO:sleap.nn.training:  Backbone: ResNet50(upsampling_stack=UpsamplingStack(output_stride=4, upsampling_stride=2, transposed_conv=False, transposed_conv_filters=24, transposed_conv_filters_rate=1.0, transposed_conv_kernel_size=4, transposed_conv_batchnorm=True, make_skip_connection=True, skip_add=True, refine_convs=2, refine_convs_filters=24, refine_convs_filters_rate=1.0, refine_convs_batchnorm=True), features_output_stride=16, pretrained=True, frozen=True, skip_connections=True, model_name='resnet50', stack_configs=[{'filters': 64, 'blocks': 3, 'stride1': 1, 'name': 'conv2', 'dilation_rate': 1}, {'filters': 128, 'blocks': 4, 'stride1': 2, 'name': 'conv3', 'dilation_rate': 1}, {'filters': 256, 'blocks': 6, 'stride1': 2, 'name': 'conv4', 'dilation_rate': 1}, {'filters': 512, 'blocks': 3, 'stride1': 1, 'name': 'conv5', 'dilation_rate': 2}])
+INFO:sleap.nn.training:  Max stride: 16
+INFO:sleap.nn.training:  Parameters: 25,103,154
+INFO:sleap.nn.training:  Heads: 
+INFO:sleap.nn.training:    [0] = MultiInstanceConfmapsHead(part_names=['head', 'back_upper', 'back_lower', 'tail_end'], sigma=5.0, output_stride=4, loss_weight=1.0)
+INFO:sleap.nn.training:    [1] = PartAffinityFieldsHead(edges=[('head', 'back_upper'), ('back_upper', 'back_lower'), ('back_lower', 'tail_end')], sigma=75.0, output_stride=8, loss_weight=1.0)
+INFO:sleap.nn.training:  Outputs: 
+INFO:sleap.nn.training:    [0] = KerasTensor(type_spec=TensorSpec(shape=(None, 272, 480, 4), dtype=tf.float32, name=None), name='MultiInstanceConfmapsHead/BiasAdd:0', description="created by layer 'MultiInstanceConfmapsHead'")
+INFO:sleap.nn.training:    [1] = KerasTensor(type_spec=TensorSpec(shape=(None, 136, 240, 6), dtype=tf.float32, name=None), name='PartAffinityFieldsHead/BiasAdd:0', description="created by layer 'PartAffinityFieldsHead'")
+INFO:sleap.nn.training:Setting up data pipelines...
+INFO:sleap.nn.training:Training set: n = 450
+INFO:sleap.nn.training:Validation set: n = 50
+INFO:sleap.nn.training:Setting up optimization...
+INFO:sleap.nn.training:  Learning rate schedule: LearningRateScheduleConfig(reduce_on_plateau=True, reduction_factor=0.5, plateau_min_delta=1e-06, plateau_patience=5, plateau_cooldown=3, min_learning_rate=1e-08)
+INFO:sleap.nn.training:  Early stopping: EarlyStoppingConfig(stop_training_on_plateau=True, plateau_min_delta=1e-06, plateau_patience=10)
+INFO:sleap.nn.training:Setting up outputs...
+INFO:sleap.nn.training:Created run path: 220731_141758.multi_instance
+INFO:sleap.nn.training:Setting up visualization...
+2022-07-31 12:18:50.175577: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -33 } dim { size: -34 } dim { size: -35 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -36 } dim { size: -37 } dim { size: 1 } } }
+2022-07-31 12:18:53.431130: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -33 } dim { size: -34 } dim { size: -35 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -36 } dim { size: -37 } dim { size: 1 } } }
+Unable to use Qt backend for matplotlib. This probably means Qt is running headless.
+INFO:sleap.nn.training:Finished trainer set up. [15.2s]
+INFO:sleap.nn.training:Creating tf.data.Datasets for training data generation...
+INFO:sleap.nn.training:Finished creating training datasets. [130.7s]
+INFO:sleap.nn.training:Starting training loop...
+Epoch 1/200
+225/225 - 271s - loss: 0.0582 - MultiInstanceConfmapsHead_loss: 0.0366 - PartAffinityFieldsHead_loss: 0.0216 - val_loss: 0.0102 - val_MultiInstanceConfmapsHead_loss: 0.0064 - val_PartAffinityFieldsHead_loss: 0.0038 - lr: 0.0010 - 271s/epoch - 1s/step
+Epoch 2/200
+225/225 - 228s - loss: 0.0057 - MultiInstanceConfmapsHead_loss: 0.0034 - PartAffinityFieldsHead_loss: 0.0023 - val_loss: 0.0050 - val_MultiInstanceConfmapsHead_loss: 0.0031 - val_PartAffinityFieldsHead_loss: 0.0020 - lr: 0.0010 - 228s/epoch - 1s/step
+Epoch 3/200
+225/225 - 223s - loss: 0.0043 - MultiInstanceConfmapsHead_loss: 0.0025 - PartAffinityFieldsHead_loss: 0.0019 - val_loss: 0.0036 - val_MultiInstanceConfmapsHead_loss: 0.0020 - val_PartAffinityFieldsHead_loss: 0.0017 - lr: 0.0010 - 223s/epoch - 993ms/step
+Epoch 4/200
+225/225 - 235s - loss: 0.0036 - MultiInstanceConfmapsHead_loss: 0.0020 - PartAffinityFieldsHead_loss: 0.0016 - val_loss: 0.0032 - val_MultiInstanceConfmapsHead_loss: 0.0017 - val_PartAffinityFieldsHead_loss: 0.0015 - lr: 0.0010 - 235s/epoch - 1s/step
+Epoch 5/200
+225/225 - 237s - loss: 0.0032 - MultiInstanceConfmapsHead_loss: 0.0017 - PartAffinityFieldsHead_loss: 0.0015 - val_loss: 0.0029 - val_MultiInstanceConfmapsHead_loss: 0.0015 - val_PartAffinityFieldsHead_loss: 0.0014 - lr: 0.0010 - 237s/epoch - 1s/step
+Epoch 6/200
+225/225 - 214s - loss: 0.0031 - MultiInstanceConfmapsHead_loss: 0.0016 - PartAffinityFieldsHead_loss: 0.0015 - val_loss: 0.0028 - val_MultiInstanceConfmapsHead_loss: 0.0014 - val_PartAffinityFieldsHead_loss: 0.0013 - lr: 0.0010 - 214s/epoch - 952ms/step
+Epoch 7/200
+225/225 - 219s - loss: 0.0029 - MultiInstanceConfmapsHead_loss: 0.0015 - PartAffinityFieldsHead_loss: 0.0014 - val_loss: 0.0027 - val_MultiInstanceConfmapsHead_loss: 0.0014 - val_PartAffinityFieldsHead_loss: 0.0013 - lr: 0.0010 - 219s/epoch - 976ms/step
+Epoch 8/200
+225/225 - 234s - loss: 0.0028 - MultiInstanceConfmapsHead_loss: 0.0014 - PartAffinityFieldsHead_loss: 0.0014 - val_loss: 0.0025 - val_MultiInstanceConfmapsHead_loss: 0.0013 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 234s/epoch - 1s/step
+Epoch 9/200
+225/225 - 211s - loss: 0.0027 - MultiInstanceConfmapsHead_loss: 0.0014 - PartAffinityFieldsHead_loss: 0.0013 - val_loss: 0.0025 - val_MultiInstanceConfmapsHead_loss: 0.0012 - val_PartAffinityFieldsHead_loss: 0.0013 - lr: 0.0010 - 211s/epoch - 936ms/step
+Epoch 10/200
+225/225 - 221s - loss: 0.0026 - MultiInstanceConfmapsHead_loss: 0.0013 - PartAffinityFieldsHead_loss: 0.0013 - val_loss: 0.0025 - val_MultiInstanceConfmapsHead_loss: 0.0013 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 221s/epoch - 984ms/step
+Epoch 11/200
+225/225 - 232s - loss: 0.0025 - MultiInstanceConfmapsHead_loss: 0.0013 - PartAffinityFieldsHead_loss: 0.0013 - val_loss: 0.0024 - val_MultiInstanceConfmapsHead_loss: 0.0012 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 232s/epoch - 1s/step
+Epoch 12/200
+225/225 - 209s - loss: 0.0025 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0013 - val_loss: 0.0025 - val_MultiInstanceConfmapsHead_loss: 0.0012 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 209s/epoch - 927ms/step
+Epoch 13/200
+225/225 - 224s - loss: 0.0024 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 224s/epoch - 997ms/step
+Epoch 14/200
+225/225 - 219s - loss: 0.0024 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 219s/epoch - 975ms/step
+Epoch 15/200
+225/225 - 223s - loss: 0.0024 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 223s/epoch - 992ms/step
+Epoch 16/200
+225/225 - 224s - loss: 0.0024 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 224s/epoch - 994ms/step
+Epoch 17/200
+225/225 - 218s - loss: 0.0024 - MultiInstanceConfmapsHead_loss: 0.0012 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 218s/epoch - 969ms/step
+Epoch 18/200
+225/225 - 220s - loss: 0.0023 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 220s/epoch - 978ms/step
+Epoch 19/200
+225/225 - 220s - loss: 0.0023 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 220s/epoch - 979ms/step
+Epoch 20/200
+225/225 - 224s - loss: 0.0023 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 224s/epoch - 995ms/step
+Epoch 21/200
+225/225 - 216s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0022 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 216s/epoch - 960ms/step
+Epoch 22/200
+225/225 - 225s - loss: 0.0023 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 225s/epoch - 1s/step
+Epoch 23/200
+225/225 - 230s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0011 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 230s/epoch - 1s/step
+Epoch 24/200
+225/225 - 209s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 209s/epoch - 928ms/step
+Epoch 25/200
+225/225 - 221s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 221s/epoch - 982ms/step
+Epoch 26/200
+225/225 - 225s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.6378e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 225s/epoch - 1s/step
+Epoch 27/200
+225/225 - 215s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0011 - PartAffinityFieldsHead_loss: 0.0012 - val_loss: 0.0023 - val_MultiInstanceConfmapsHead_loss: 0.0012 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 215s/epoch - 956ms/step
+Epoch 28/200
+225/225 - 223s - loss: 0.0022 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 0.0010 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 223s/epoch - 990ms/step
+Epoch 29/200
+225/225 - 220s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0024 - val_MultiInstanceConfmapsHead_loss: 0.0012 - val_PartAffinityFieldsHead_loss: 0.0012 - lr: 0.0010 - 220s/epoch - 976ms/step
+Epoch 30/200
+225/225 - 219s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 0.0010 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 9.8188e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 219s/epoch - 971ms/step
+Epoch 31/200
+
+Epoch 31: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+225/225 - 233s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.9989e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0021 - val_MultiInstanceConfmapsHead_loss: 9.5314e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 0.0010 - 233s/epoch - 1s/step
+Epoch 32/200
+225/225 - 229s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.8572e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3960e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 5.0000e-04 - 229s/epoch - 1s/step
+Epoch 33/200
+225/225 - 209s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.8185e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.2664e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 5.0000e-04 - 209s/epoch - 930ms/step
+Epoch 34/200
+225/225 - 239s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.8726e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.2477e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 5.0000e-04 - 239s/epoch - 1s/step
+Epoch 35/200
+225/225 - 211s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.8987e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.1819e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 5.0000e-04 - 211s/epoch - 940ms/step
+Epoch 36/200
+225/225 - 219s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.8380e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.7746e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 5.0000e-04 - 219s/epoch - 971ms/step
+Epoch 37/200
+225/225 - 219s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7102e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3705e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 5.0000e-04 - 219s/epoch - 972ms/step
+Epoch 38/200
+225/225 - 221s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7697e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.9641e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 5.0000e-04 - 221s/epoch - 984ms/step
+Epoch 39/200
+225/225 - 220s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.5912e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.6372e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 5.0000e-04 - 220s/epoch - 978ms/step
+Epoch 40/200
+
+Epoch 40: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+225/225 - 228s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7318e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.4677e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 5.0000e-04 - 228s/epoch - 1s/step
+Epoch 41/200
+225/225 - 205s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.5645e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.4353e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 205s/epoch - 911ms/step
+Epoch 42/200
+225/225 - 215s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7049e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.6349e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 2.5000e-04 - 215s/epoch - 956ms/step
+Epoch 43/200
+225/225 - 217s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7916e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.4688e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 217s/epoch - 963ms/step
+Epoch 44/200
+225/225 - 220s - loss: 0.0021 - MultiInstanceConfmapsHead_loss: 9.7364e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3348e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 220s/epoch - 976ms/step
+Epoch 45/200
+225/225 - 215s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.6432e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0019 - val_MultiInstanceConfmapsHead_loss: 8.7800e-04 - val_PartAffinityFieldsHead_loss: 9.9566e-04 - lr: 2.5000e-04 - 215s/epoch - 957ms/step
+Epoch 46/200
+225/225 - 217s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.4939e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3598e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 217s/epoch - 963ms/step
+Epoch 47/200
+225/225 - 214s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.5223e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.2785e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 214s/epoch - 950ms/step
+Epoch 48/200
+225/225 - 218s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.4171e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.6931e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 2.5000e-04 - 218s/epoch - 969ms/step
+Epoch 49/200
+225/225 - 217s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.3548e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3636e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 2.5000e-04 - 217s/epoch - 964ms/step
+Epoch 50/200
+
+Epoch 50: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+225/225 - 228s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.6468e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0019 - val_MultiInstanceConfmapsHead_loss: 9.1117e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 2.5000e-04 - 228s/epoch - 1s/step
+Epoch 51/200
+225/225 - 209s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.5490e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0019 - val_MultiInstanceConfmapsHead_loss: 9.0300e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.2500e-04 - 209s/epoch - 928ms/step
+Epoch 52/200
+225/225 - 216s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.5286e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.2150e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.2500e-04 - 216s/epoch - 959ms/step
+Epoch 53/200
+225/225 - 227s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.3249e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.3331e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 1.2500e-04 - 227s/epoch - 1s/step
+Epoch 54/200
+225/225 - 218s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.4048e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0019 - val_MultiInstanceConfmapsHead_loss: 9.0737e-04 - val_PartAffinityFieldsHead_loss: 0.0010 - lr: 1.2500e-04 - 218s/epoch - 970ms/step
+Epoch 55/200
+225/225 - 204s - loss: 0.0020 - MultiInstanceConfmapsHead_loss: 9.4868e-04 - PartAffinityFieldsHead_loss: 0.0011 - val_loss: 0.0020 - val_MultiInstanceConfmapsHead_loss: 9.2756e-04 - val_PartAffinityFieldsHead_loss: 0.0011 - lr: 1.2500e-04 - 204s/epoch - 908ms/step
+Epoch 55: early stopping
+INFO:sleap.nn.training:Finished training loop. [202.9 min]
+INFO:sleap.nn.training:Deleting visualization directory: 220731_141758.multi_instance/viz
+INFO:sleap.nn.training:Saving evaluation metrics to model folder...
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   0% ETA: -:--:-- ?2022-07-31 15:44:10.623983: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -170 } dim { size: -171 } dim { size: -172 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -173 } dim { size: -174 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 100% ETA: 0:00:01 2.4 FPS2022-07-31 15:47:32.037331: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -170 } dim { size: -171 } dim { size: -172 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -173 } dim { size: -174 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% ETA: 0:00:00 ?
+INFO:sleap.nn.evals:Saved predictions: 220731_141758.multi_instance/labels_pr.train.slp
+INFO:sleap.nn.evals:Saved metrics: 220731_141758.multi_instance/metrics.train.npz
+INFO:sleap.nn.evals:OKS mAP: 0.000000
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   0% ETA: -:--:-- ?2022-07-31 15:47:42.561406: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -170 } dim { size: -171 } dim { size: -172 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -173 } dim { size: -174 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━  96% ETA: 0:00:01 2.3 FPS2022-07-31 15:48:02.804319: W tensorflow/core/grappler/costs/op_level_cost_estimator.cc:690] Error in PredictCost() for the op: op: "CropAndResize" attr { key: "T" value { type: DT_FLOAT } } attr { key: "extrapolation_value" value { f: 0 } } attr { key: "method" value { s: "bilinear" } } inputs { dtype: DT_FLOAT shape { dim { size: -170 } dim { size: -171 } dim { size: -172 } dim { size: 1 } } } inputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: 4 } } } inputs { dtype: DT_INT32 shape { dim { size: -2 } } } inputs { dtype: DT_INT32 shape { dim { size: 2 } } } device { type: "GPU" vendor: "NVIDIA" model: "Tesla T4" frequency: 1590 num_cores: 40 environment { key: "architecture" value: "7.5" } environment { key: "cuda" value: "11010" } environment { key: "cudnn" value: "8005" } num_registers: 65536 l1_cache_size: 24576 l2_cache_size: 4194304 shared_memory_size_per_multiprocessor: 65536 memory_size: 14444920832 bandwidth: 320064000 } outputs { dtype: DT_FLOAT shape { dim { size: -2 } dim { size: -173 } dim { size: -174 } dim { size: 1 } } }
+Predicting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% ETA: 0:00:00 0.4 FPS
+INFO:sleap.nn.evals:Saved predictions: 220731_141758.multi_instance/labels_pr.val.slp
+INFO:sleap.nn.evals:Saved metrics: 220731_141758.multi_instance/metrics.val.npz
+INFO:sleap.nn.evals:OKS mAP: 0.000000
