@@ -10,6 +10,9 @@ for feature detection. The Colab Notebooks used for training are available under
 * Top-Down: https://colab.research.google.com/drive/1kygUUlPdjgzQN1zIoxhC34b56R8BDDU6?usp=sharing
 * Bottom-Up: https://colab.research.google.com/drive/16gLRjjtfWN2AQceOK6Nk9SppPeRlyt9_?usp=sharing
 
+The best performing model (Top-Down UNET) can be downloaded here: 
+https://drive.google.com/drive/folders/1qH2NCAPlIuLUrrmh_jTeUC1GF7iXcVtw?usp=sharing
+
 # Set-Up 
 
 1. Install SLEAP on local device. Instructions available under: https://sleap.ai/installation.html. 
