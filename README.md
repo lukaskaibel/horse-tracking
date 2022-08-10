@@ -1,4 +1,4 @@
-# horse_tracking
+# horse-tracking
 
 # Overview
 
